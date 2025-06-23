@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { logout } from '../api/auth';
-import './Header.css'; // Make sure this path is correct
+import './header.css'; // Make sure this path is correct
 
 const Header = ({ onChangePassword, onChangeAccessCode }) => {
   const [showDropdown, setShowDropdown] = useState(false);
