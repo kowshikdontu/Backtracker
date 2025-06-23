@@ -25,7 +25,7 @@ const Header = ({ onChangePassword, onChangeAccessCode }) => {
     <header className="header">
       <div className="header-inner">
         <div className="title-section">
-          <h1 className="app-title">DSA Hub</h1>
+          <h1 className="app-title">Backtracker</h1>
         </div>
 
         <nav className="nav-section">
