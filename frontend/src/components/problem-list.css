@@ -1,0 +1,152 @@
+.card-problem-list {
+    background: var(--card-bg);
+    border-radius: var(--input-radius, 6px);
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: var(--spacing-lg, 24px);
+    color: var(--text-color);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .problem-count {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+  
+  .problem-table-wrapper {
+    overflow-x: auto;
+  }
+  
+  .problem-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .problem-table th,
+  .problem-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-primary);
+  }
+  
+  .problem-table th {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+  
+  .problem-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .problem-link:hover {
+    text-decoration: underline;
+  }
+  
+  .status-toggle {
+    border: 2px solid var(--border-primary);
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    font-weight: bold;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .status-toggle.active {
+    border-color: var(--success);
+    color: var(--success);
+  }
+  
+  .badge {
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    margin-right: 0.25rem;
+  }
+  
+  .badge.tag {
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+  }
+  
+  .badge.difficulty.easy {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  
+  .badge.difficulty.medium {
+    background-color: #fef9c3;
+    color: #92400e;
+  }
+  
+  .badge.difficulty.hard {
+    background-color: #fee2e2;
+    color: #991b1b;
+  }
+  
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: var(--radius-sm);
+  }
+  
+  .spinner {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--primary);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  
+  .modal-sm {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  
+  .modal-actions {
+    display: flex;
+    gap: 5rem;
+    margin-top: 1rem;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .text-muted {
+    color: #888;
+    font-size: 0.9rem;
+  }

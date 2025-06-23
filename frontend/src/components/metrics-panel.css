@@ -1,0 +1,121 @@
+:root {
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+  
+    --input-border: #ccc;
+    --input-bg: rgb(255, 255, 255);
+    --input-radius: 6px;
+  
+    --text-muted: #4d4c4c;
+  }
+
+.metrics-panel {
+    background: var(--input-bg);
+    border-radius: var(--input-radius, 6px);
+    padding: var(--spacing-lg, 24px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: var(--spacing-lg, 24px);
+    box-sizing: border-box;
+    --text-primary: black;
+    color: var(--text-primary);
+    font-weight: 400;
+  }
+  
+  .metrics-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-lg, 24px);
+  }
+  
+  .metrics-subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-md, 16px);
+  }
+  
+  .metrics-cards {
+    display: flex;
+    gap: var(--spacing-md, 16px);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-lg, 24px);
+  }
+  
+  .metrics-card {
+    flex: 1;
+    min-width: 120px;
+    border-radius: var(--radius-md, 6px);
+    padding: var(--spacing-md, 16px);
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  .metrics-card .count {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .metrics-card .label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .metric-bars {
+    border: var(--border);
+    border-radius: 8px;
+    padding: 15px;
+  }
+  
+  .metrics-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0px 20px 20px;
+  }
+  
+  .metrics-bar-label {
+    width: 60px;
+    flex-shrink: 0;
+    font-size: 0.875rem;
+  }
+  
+  .metrics-bar-value {
+    width: 40px;
+    text-align: right;
+    flex-shrink: 0;
+    font-size: 0.875rem;
+  }
+  
+  .metrics-bar-track {
+    flex-grow: 1;
+    background: var(--bg-secondary, #f0f0f0);
+    border-radius: var(--radius-sm, 4px);
+    height: 10px;
+    overflow: hidden;
+  }
+  
+  .metrics-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-sm, 4px);
+    transition: width 0.3s ease;
+  }
+
+  .metrics-graphs-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  
+  .metrics-graph {
+    flex: 1;
+    min-width: 300px;
+    border: var(--border);
+    border-radius: var(--radius-md);
+    padding: 10px;
+  }
+  
