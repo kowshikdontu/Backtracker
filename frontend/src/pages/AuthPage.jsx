@@ -31,7 +31,7 @@ const AuthPage = () => {
       {/* Header */}
       <div className="text-center mb-xl">
         <h1 style={{ fontSize: '3rem', marginBottom: 'var(--spacing-md)' }}>
-          DSA Hub
+          BACKTRACKER
         </h1>
         <p style={{
           fontSize: '1.25rem',
