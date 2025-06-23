@@ -1,5 +1,5 @@
 // API Base Configuration
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'https://backtracker-b163.onrender.com';
 
 // Auth token management
 export const getAuthToken = () => {
