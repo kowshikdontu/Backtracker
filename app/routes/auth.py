@@ -136,7 +136,7 @@ async def forgot_password(data: ForgotPasswordRequest, db: Session = Depends(get
         return response
 
     token = create_reset_token({"sub": user.username})
-    reset_link = f"https://backtracker-b163.onrender.com/reset-password?token={token}"
+    reset_link = f"https://backtracker1.onrender.com/reset-password?token={token}"
 
     email_template_path = Path(__file__).parent.parent.joinpath("templates/email_reset_pwd.html")
     with open(email_template_path, encoding="utf-8") as tpl:
