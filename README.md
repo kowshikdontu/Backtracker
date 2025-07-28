@@ -1,11 +1,9 @@
 # Backtracker
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-
-Backtracker is a custom DSA‑sheet sharing and management platform built for college programmers to create, share, and collaborate on curated problem sets. The frontend is a modern React app (built with Vite) and the backend is a high‑performance FastAPI service with SQLAlchemy ORM and PostgreSQL.
+Backtracker is a custom DSA‑sheet sharing and management platform built for college programmers to create, share, and collaborate on curated problem sets. It is meant mainly for saving problems of different platforms in a sheet and use it while revising. The frontend is a modern React app (built with Vite) and the backend is a high‑performance FastAPI service with SQLAlchemy ORM.
 
 **Live Demo**: https://backtracker1.onrender.com  
-*(Access restricted to college email addresses—you’ll need your `.edu`/`.ac.in` ID to log in.)*
+*(Access restricted to college email addresses, you’ll need your `@vitapstudent.ac.in` ID to log in.)*
 
 ---
 
@@ -22,9 +20,7 @@ Backtracker is a custom DSA‑sheet sharing and management platform built for co
   - [Frontend Setup](#frontend-setup)  
 - [Usage](#usage)  
 - [API Documentation](#api-documentation)  
-- [Environment Variables](#environment-variables)  
 - [Contributing](#contributing)  
-- [License](#license)  
 - [Contact](#contact)  
 - [Acknowledgements](#acknowledgements)  
 
@@ -187,12 +183,6 @@ Please follow the existing code style and write tests where applicable.
 
 ---
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
 ## Contact
 
 Developed by **Dontu Kowshik**  
@@ -205,4 +195,3 @@ Developed by **Dontu Kowshik**
 
 - Thanks to my frontend collaborator for building the React/Vite UI  
 - Inspired by the full‑stack FastAPI + React templates  
-- Iconography by [Font Awesome](https://fontawesome.com/)  
