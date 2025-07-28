@@ -37,7 +37,7 @@ Backtracker is a custom DSA‑sheet sharing and management platform built for co
 
 ---
 
-## Screenshots
+## Screenshots ( for others, as only vitap students can login)
 
 <!-- Add your deployed screenshots into a `screenshots/` folder and update these paths -->
 ### login page
