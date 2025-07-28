@@ -164,6 +164,7 @@ By default, the frontend will proxy API requests at `/api` to `localhost:8000`.
 ## API Documentation
 
 FastAPI provides interactive docs:
+<img width="1047" height="728" alt="image" src="https://github.com/user-attachments/assets/827bf5de-93b3-4d45-834b-13e75d5fa88e" />
 
 - **Swagger UI**: `http://localhost:8000/docs`  
 - **Redoc**:       `http://localhost:8000/redoc`  
