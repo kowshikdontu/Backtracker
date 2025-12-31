@@ -35,11 +35,11 @@ const RegisterForm = ({ onSuccess, onSwitchToLogin }) => {
       return;
     }
 
-    if (!formData.email.endsWith('@vitapstudent.ac.in')) {
-      setError('Please use your VIT-AP email address (@vitapstudent.ac.in)');
-      setIsLoading(false);
-      return;
-    }
+//     if (!formData.email.endsWith('@vitapstudent.ac.in')) {
+//       setError('Please use your VIT-AP email address (@vitapstudent.ac.in)');
+//       setIsLoading(false);
+//       return;
+//     }
 
     try {
       await registerUser({
@@ -80,7 +80,7 @@ const RegisterForm = ({ onSuccess, onSwitchToLogin }) => {
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label mb-1">
-            VIT-AP Email
+            Email
           </label>
           <input
             type="email"
@@ -88,7 +88,7 @@ const RegisterForm = ({ onSuccess, onSwitchToLogin }) => {
             value={formData.email}
             onChange={handleChange}
             className="input-field"
-            placeholder="your.name@vitapstudent.ac.in"
+            placeholder="enter your mail"
             required
           />
         </div>

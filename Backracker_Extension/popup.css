@@ -1,0 +1,136 @@
+
+body {
+    width: 360px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    padding: 20px;
+    margin: 0;
+    color: #333;
+    background-color: #fff;
+}
+
+/* Headings */
+h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+}
+
+/* Flex header for App Section */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #000;
+}
+
+/* Inputs & Selects - The clean look */
+input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 6px;        /* Soft rounded corners */
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+/* Focus state for inputs - Purple Glow */
+input:focus, select:focus {
+    border-color: #6c42e3;
+    box-shadow: 0 0 0 3px rgba(108, 66, 227, 0.1);
+}
+
+/* URL Input (Read-only) */
+#problemUrl {
+    background-color: #f9fafb;
+    color: #6b7280;
+    cursor: default;
+}
+
+/* Helper text */
+small {
+    color: #6b7280;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+
+/* PRIMARY BUTTON (The Purple One) */
+#createBtn, #loginBtn {
+    width: 100%;
+    padding: 12px;
+    background-color: #6c42e3; /* Your brand purple */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+#createBtn:hover, #loginBtn:hover {
+    background-color: #5a32c5; /* Darker purple on hover */
+}
+
+#createBtn:disabled, #loginBtn:disabled {
+    background-color: #a58ee8;
+    cursor: not-allowed;
+}
+
+/* SECONDARY BUTTON (Logout) */
+.small-btn {
+    padding: 6px 12px;
+    background-color: #f3f4f6;
+    color: #4b5563;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.small-btn:hover {
+    background-color: #e5e7eb;
+    color: #1f2937;
+}
+
+/* Status Messages */
+.status-msg {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    display: none; /* Hidden by default */
+}
+
+.success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+    display: block;
+}
+
+.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    display: block;
+}

@@ -10,7 +10,7 @@ Base.metadata.create_all(bind=engine)
 app.include_router(api_router)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Or ["http://localhost:3000"]
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

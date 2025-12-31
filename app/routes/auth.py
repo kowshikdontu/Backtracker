@@ -16,7 +16,7 @@ from jose import JWTError, jwt
 from app.auth_utils import SECRET_KEY, ALGORITHM
 import logging
 from pathlib import Path
-
+from app.config import settings
 
 log = logging.getLogger(__name__)
 
@@ -39,7 +39,7 @@ class CustomOAuth2Form:
 async def send_register_email(user):
     try:
         token = create_verification_token({"sub": user.username})
-        verify_link = f"https://backtracker-b163.onrender.com/auth/verify-email?token={token}"
+        verify_link =  f"{settings.BACKEND_URL}/auth/verify-email?token={token}"
 
         email_template_path = Path(__file__).parent.parent.joinpath("templates/email_verify.html")
         with open(email_template_path, encoding="utf-8") as tpl:
@@ -96,6 +96,7 @@ async def register(user: UserCreate, db: Session = Depends(get_db)):
     sheet_password = pwd_context.hash(user.access_code)
     new_user = User(username=user.username, password=hashed_password, access_code=sheet_password)
     # send email
+    # print("hi")
     await send_register_email(new_user)
     # add user to DB
     db.add(new_user)
@@ -108,7 +109,7 @@ async def register(user: UserCreate, db: Session = Depends(get_db)):
 @router.get("/verify-email")
 def verify_email(token: str, db: Session = Depends(get_db)):
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
         email: str = payload.get("sub")
         log.info(f"Email: {email}")
         if email is None:
@@ -136,7 +137,7 @@ async def forgot_password(data: ForgotPasswordRequest, db: Session = Depends(get
         return response
 
     token = create_reset_token({"sub": user.username})
-    reset_link = f"https://backtracker1.onrender.com/reset-password?token={token}"
+    reset_link = f"{settings.FRONTEND_URL}/reset-password?token={token}"
 
     email_template_path = Path(__file__).parent.parent.joinpath("templates/email_reset_pwd.html")
     with open(email_template_path, encoding="utf-8") as tpl:

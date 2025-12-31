@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+
+    <div id="loginSection">
+      <h3>Login to Backtracker</h3>
+      <div id="loginStatus" class="status-msg"></div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="student@vitapstudent.ac.in">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="********">
+      </div>
+
+      <button id="loginBtn">Login</button>
+    </div>
+
+    <div id="appSection" style="display: none;">
+      <div class="header-row">
+        <h3>Add New Problem</h3>
+        <button id="logoutBtn" class="small-btn">Logout</button>
+      </div>
+
+      <div id="statusMessage" class="status-msg"></div>
+
+      <div class="form-group">
+        <label>Problem Title *</label>
+        <input type="text" id="problemTitle">
+      </div>
+
+      <div class="form-group">
+        <label>Problem URL</label>
+        <input type="text" id="problemUrl" readonly>
+      </div>
+
+      <div class="form-group">
+        <label>Tags</label>
+        <input type="text" id="tags" placeholder="array, string">
+      </div>
+
+      <div class="form-group">
+        <label>Difficulty *</label>
+        <select id="difficulty">
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+      </div>
+
+      <button id="createBtn">Add to Sheet</button>
+    </div>
+
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

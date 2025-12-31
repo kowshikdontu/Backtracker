@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Backtracker Helper",
+  "version": "1.0",
+  "description": "Quickly add current problem to your Backtracker sheet.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "cookies",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://localhost:8000/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "128": "icon.png"
+  }
+}
