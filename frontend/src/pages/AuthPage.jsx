@@ -143,6 +143,7 @@ const AuthPage = () => {
             collaborative sheet manager designed for saving your favourite question url in sheets. Explore our Features!
           </p>
 
+
           <div className="flex gap-4">
             <button onClick={scrollToFeatures} className="btn-secondary">
               Explore Features ↓
@@ -152,7 +153,35 @@ const AuthPage = () => {
             </a>
           </div>
         </div>
+         {/* ... inside the Left Side div, after the buttons div ... */}
 
+            <div className="mt-10 p-5 rounded-xl bg-white bg-opacity-5 border border-purple-500/30 backdrop-blur-md max-w-md shadow-lg">
+              <div className="flex items-center gap-4">
+                {/* Icon */}
+                <div className="bg-purple-600/20 p-3 rounded-lg text-purple-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 19l-1 1-1-1-1 1-1-1-1 1-1-1-1 1-1-1-1 1-1-1-5-5m0 0l5 5m0-5v5" />
+                  </svg>
+                </div>
+
+                {/* Text */}
+                <div>
+                  <p className="text-xs text-purple-400 font-bold uppercase tracking-widest mb-1">
+                    Recruiter / Demo Access
+                  </p>
+                  <div className="flex flex-col gap-1">
+                    Email:
+                    <code className="text-sm text-white font-mono bg-black/30 px-2 py-1 rounded select-all cursor-pointer hover:bg-black/50 transition-colors">
+                      kowshikdontu@gmail.com
+                    </code>
+                    password:
+                    <code className="text-sm text-white font-mono bg-black/30 px-2 py-1 rounded select-all cursor-pointer hover:bg-black/50 transition-colors">
+                      password123
+                    </code>
+                  </div>
+                </div>
+              </div>
+            </div>
         {/* Right Side: Glass Login Card */}
         <div className="lg:w-1/3 w-full relative z-10 slide-up">
           {/* Decorative glowing orb behind the card */}
