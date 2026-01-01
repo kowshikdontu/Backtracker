@@ -1,9 +1,14 @@
 # Backtracker
 
-Backtracker is a custom DSA‑sheet sharing and management platform built for college programmers to create, share, and collaborate on curated problem sets. It is meant mainly for saving problems of different platforms in a sheet and use it while revising. The frontend is a modern React app (built with Vite) and the backend is a high‑performance FastAPI service with SQLAlchemy ORM.
+Backtracker is a custom DSA‑sheet sharing and management platform built for competitive programmers to create, share, and collaborate on curated problem sets. It is meant mainly for saving problems of different platforms in a sheet and use it while revising. The frontend is a modern React app (built with Vite) and the backend is a high‑performance FastAPI service with SQLAlchemy ORM.
+
+we had a custom chrome extension and also implemented Redis for caching and cache invalidation strategies that reduced database query load by 40%
+for saving/sharing Problem URLs and details during grind.
+
+Protected by JWT-based authentication and email-verified user on-boardings.Implemented Redis-based API rate
+limiting to protect backend from abuse
 
 **Live Demo**: https://backtracker1.onrender.com  
-*(Access restricted to college email addresses, you’ll need your `@vitapstudent.ac.in` ID to log in.)*
 
 ---
 
@@ -28,79 +33,82 @@ Backtracker is a custom DSA‑sheet sharing and management platform built for co
 
 ## Features
 
-- **User Authentication** via institutional email (Note: this website is made for VIT-AP Students only) 
+- **User Authentication** via personal email : used FastAPI-Mail for verified user on-boardings.
 - **Create & Manage Sheets**: group problems by topic, difficulty, status  
 - **Share & Collaborate**: share read‑only/public links with peers , with options to add (+) desired to your sheet  
-- **Filtering & Search**: find problems by tag, difficulty, or title  
+- **Filtering & Search**: find problems by tag, difficulty, or title
+- **Custom Chrome Extension**: add our chrome extension and can easily add the problem to sheets, it auto fetches the name and url for ease.
+- **Redis-based**: API Cache, Cache Invalidations and Rate limiting promises fast and reliable platfrom.
 - **Responsive UI**: built with React and Vite for snappy client‑side performance and visualized meteric using bar graphs
 - **Robust API**: FastAPI backend with SQLAlchemy models, Pydantic validation, and automated docs  
 
 ---
+# Landing Page
+<img width="1892" height="812" alt="image" src="https://github.com/user-attachments/assets/dea2f11b-5b18-4196-905d-19e7cd92a70a" />
 
-## Screenshots ( for others, as only vitap students can login)
-
-<!-- Add your deployed screenshots into a `screenshots/` folder and update these paths -->
-### login page
-<img width="993" height="874" alt="image" src="https://github.com/user-attachments/assets/14aa0d8d-e219-4858-97a0-a1b451077c0f" />
-
-### Home / Dashboard  
-<img width="1919" height="884" alt="image" src="https://github.com/user-attachments/assets/976740ff-990d-4deb-ad35-edbd2611214b" />
-
-### to add problems to sheet
-<img width="1889" height="895" alt="image" src="https://github.com/user-attachments/assets/9f6c615e-69f5-408a-b38f-651ed9a64fbf" />
-
-### after adding problems
-<img width="1873" height="753" alt="image" src="https://github.com/user-attachments/assets/5e97757b-3127-411e-a1fa-b7593eafbc84" />
-
-### to view other sheet
-<img width="1847" height="870" alt="image" src="https://github.com/user-attachments/assets/620b1412-9b30-40ca-88ba-718703fb2726" />
-
-
----
 
 ## Tech Stack
 
 - **Backend**  
   - Python 3.10, FastAPI  
-  - SQLAlchemy ORM, PostgreSQL  
+  - SQLAlchemy ORM, PostgreDB (Neon DB)
+  - Redis (Uptash)  
   - Uvicorn ASGI server  
   - Pydantic for data validation  
 - **Frontend**  
   - React 18+, Vite  
   - React Router, Axios  
-  - CSS Modules / your preferred styling  
+  - CSS Modules  
 - **Dev & Deployment**  
-  - GitHub Actions CI (optional)  
-  - Docker Compose (optional)  
   - Deployed on Render with seeded data
   - Currently AWS Architecture designing is going on!
 
 ---
 
 ## Architecture
+```mermaid 
+graph TD
+      subgraph Client_Side ["Frontend & User Interface"]
+          UI[React Dashboard]
+          Ext[Chrome Extension]
+      end
+  
+      subgraph Server_Side ["Backend Infrastructure (Render)"]
+          API[FastAPI Server]
+          Auth[JWT Auth Middleware]
+          Mail[FastAPI-Mail Service]
+      end
+  
+      subgraph Data_Layer ["Data Persistence & Caching"]
+          DB[(PostgreSQL - Neon)]
+          Cache[(Redis - Upstash)]
+      end
+  
+      %% Connections
+      UI -- "HTTPS / JSON" --> API
+      Ext -- "HTTPS / JSON (Add Problem)" --> API
+      
+      API -- "Validate Token" --> Auth
+      API -- "Read/Write Data" --> DB
+      API -- "Cache / Rate Limit" --> Cache
+      API -- "Async Email" --> Mail
+      
+      Mail -- "SMTP" --> Gmail[Gmail SMTP]
 
 ```
-┌────────────┐       ┌──────────────┐       ┌────────────┐
-│            │  HTTP │              │  SQL  │            │
-│   React    │──────▶│  FastAPI     │──────▶│ PostgreSQL │
-│ (frontend) │       │  (backend)   │       │ (database) │
-│            │◀──────│              │◀──────│            │
-└────────────┘  JSON └──────────────┘  ORM  └────────────┘
-```
-
----
 
 ## My Role
 
 - **Backend Development**  
   - Designed and implemented the RESTful API with FastAPI  
-  - Defined SQLAlchemy models, migrations, and relational schemas  
+  - Defined SQLAlchemy models, migrations, and relational schemas
+  - Implement Redis-based optimisations
   - Secured endpoints with JWT‑based authentication tied to college email domain  
-  - Wrote Pydantic schemas for request/response validation  
+  - Wrote Pydantic schemas for request/response validation
+  - Integrated API endpoints with frontend components via Axios 
+      
 - **Collaboration**  
-  - Worked alongside a junior teammate who built out the React/Vite frontend  
-  - Integrated API endpoints with frontend components via Axios  
-  - Coordinated on teams meet in summer vacation holidays  
+  - Worked alongside a Gemini 3 PRO who helped in building out the React/Vite frontend 
 
 ---
 
@@ -147,18 +155,38 @@ npm install
 npm run dev
 ```
 
-By default, the frontend will proxy API requests at `/api` to `localhost:8000`.
+### Enviromental Variables 
+- DATABASE_URL 
+- REDIS_URL 
+- BACKEND_URL  = "http://127.0.0.1:8000" ( give original one when deployed as email templates use them )
+- FRONTEND_URL = "http://localhost:3000"
+- SECRET_KEY 
+- ALGORITHM 
+- ACCESS_TOKEN_EXPIRE_MINUTES
+- MAIL_USERNAME (your mail as admin )
+- MAIL_PASSWORD ( get that from app passwords of yout adi
+- MAIL_PORT = 587
+- MAIL_SERVER  = "smtp.gmail.com"
+
+
 
 ---
 
 ## Usage
 
-1. Register or log in with your college email.  
+1. Register or log in with your email.  
 2. DSA Corner has a dedicated sheet, where you can save your problem links with desired tags.  
 3. Add or import problems (LeetCode IDs, custom entries).  
 4. Share your sheet via access code.  
 5. Exam Corner under construction for easy paper sharing during semester exams
-
+6. For Extension follow installation guide in website
+    -  Installation Guide
+          * Go to our GitHub Repository (button below).
+          * Download the extension ZIP and extract/unzip it.
+          * Open Chrome and go to chrome://extensions
+          * Toggle Developer mode (top right corner).
+          * Click Load unpacked and select the backtracker_extension folder inside the unzipped files.
+          * Enable it and Log in with our website Credentials and can use it in any Platforms as shown.
 ---
 
 ## API Documentation
@@ -188,11 +216,11 @@ Please follow the existing code style and write tests where applicable.
 
 Developed by **Dontu Kowshik**  
 - GitHub: [@kowshikdontu](https://github.com/kowshikdontu)  
-- Email: kowshik.22bce9556@vitapstudent.ac.in 
+- Email: kowshikdontu@gmail.com
 
 ---
 
 ## Acknowledgements
 
-- Thanks to my frontend collaborator for building the React/Vite UI  
+- Thanks to my Gemini for helping me in developing Frontend.
 - Inspired by the full‑stack FastAPI + React templates  
