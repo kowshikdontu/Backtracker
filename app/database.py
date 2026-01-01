@@ -5,7 +5,10 @@ from pathlib import Path
 from app.config import settings
 SQLALCHEMY_DATABASE_URL = settings.DATABASE_URL
 print(SQLALCHEMY_DATABASE_URL)
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+engine = create_engine(SQLALCHEMY_DATABASE_URL, pool_pre_ping=True,
+    pool_recycle=300,
+    pool_size=5,
+    max_overflow=10)
 SessionLocal = sessionmaker(autoflush=False, autocommit=False, bind=engine)
 Base = declarative_base()
 
